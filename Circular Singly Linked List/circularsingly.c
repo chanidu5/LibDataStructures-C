@@ -77,7 +77,7 @@ void addBeginning(struct circularSingly *list, int value){
 	}
 	list -> size++;
 }
-
+// position = 1, 2, 3, 4, ,,,
 void addPosition(struct circularSingly *list, int value, int position){
 
 	if(position < 0){
