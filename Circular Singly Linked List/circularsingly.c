@@ -132,6 +132,16 @@ void deleteBeginning(struct circularSingly *list){
 
 void deleteEnd(struct circularSingly *list){
 
+	if(list -> tail == NULL){
+
+		return;	
+	}
+	if(list -> tail == list -> tail -> next){
+
+		free(list -> tail);
+		list -> tail = NULL;
+
+	}
 	struct node *current = list -> tail -> next;
 
 	while(current -> next != list -> tail){
@@ -144,4 +154,50 @@ void deleteEnd(struct circularSingly *list){
 
 	free(temp);
 
+}
+
+void deletePosition(struct circularSingly *list, int position){
+	
+	if(position < 0 || position > list -> size){
+		printf("Invalid Position \n");
+		return;
+	}
+
+	if(list -> tail == NULL){
+		return;
+	}
+	else if(list -> tail -> next == list -> tail){
+		free(list -> tail);
+		list -> tail = NULL;
+		return;
+	}
+
+	if(position == 1){
+		deleteBeginning(list);
+	}
+	if(position == list -> size){
+		deleteEnd(list);
+	}
+
+	struct node *current = list -> tail -> next; 
+	for(int i = 1; i < position - 1; i++ ){
+		current = current -> next;
+	}
+	
+	struct node *temp = current -> next;
+	current -> next = temp -> next;
+	free(temp);
+}
+
+void freeMemory(struct circularSingly *list){
+	struct node *current = list -> tail -> next;
+	struct node *head = current;
+	do{
+		struct node *nextNode = current -> next;
+		free(current);
+		current = nextNode;
+	
+	}while(current != head);
+	list -> tail = NULL;
+	list -> size = 0;
 }

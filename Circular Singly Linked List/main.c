@@ -18,13 +18,21 @@ int main(){
 	print(&list);
 	
 	//addEnd(&list, value1);
+	printf("add element position value is 3\n");
 	addPosition(&list, value4, 3);
 	print(&list);
 
 	deleteBeginning(&list);
 	print(&list);
 
-	deleteEnd(&list);
+	//deleteEnd(&list);
+	//print(&list);
+	
+	deletePosition(&list, 3);
+	print(&list);
+
+	freeMemory(&list);
 	print(&list);
 	return 0;
+
 }

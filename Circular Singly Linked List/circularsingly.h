@@ -21,6 +21,8 @@ void addPosition(struct circularSingly *list, int value, int position);
 void addEnd(struct circularSingly *list, int value);
 void deleteBeginning(struct circularSingly *list);
 void deleteEnd(struct circularSingly *list);
+void deletePosition(struct circularSingly *list, int position);
+void freeMemory(struct circularSingly *list);
 
 
 #endif
